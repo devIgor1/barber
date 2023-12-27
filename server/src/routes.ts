@@ -8,6 +8,8 @@ import { CreateHaircutController } from "./controllers/haircut/CreateHaircutCont
 import { ListUserHaircutsController } from "./controllers/haircut/ListUserHaircutsController"
 import { UpdateHaircutController } from "./controllers/haircut/UpdateHaircutController"
 import { CheckSubscriptionController } from "./controllers/haircut/CheckSubscriptionController"
+import { CountHaircutsController } from "./controllers/haircut/CountHaircutsController"
+import { HaircutDetailsController } from "./controllers/haircut/HaircutDetailsController"
 
 const router = Router()
 
@@ -37,6 +39,18 @@ router.get(
   "/haircut/check",
   isAuthenticated,
   new CheckSubscriptionController().handle
+)
+
+router.get(
+  "/haircut/count",
+  isAuthenticated,
+  new CountHaircutsController().handle
+)
+
+router.get(
+  "/haircut/details",
+  isAuthenticated,
+  new HaircutDetailsController().handle
 )
 
 export { router }
