@@ -12,6 +12,7 @@ import { CountHaircutsController } from "./controllers/haircut/CountHaircutsCont
 import { HaircutDetailsController } from "./controllers/haircut/HaircutDetailsController"
 import { NewScheduleController } from "./controllers/schedule/NewScheduleController"
 import { ListScheduleController } from "./controllers/schedule/ListScheduleController"
+import { FinishScheduleController } from "./controllers/schedule/FinishScheduleController"
 
 const router = Router()
 
@@ -60,5 +61,11 @@ router.get(
 router.post("/schedule", isAuthenticated, new NewScheduleController().handle)
 
 router.get("/schedules", isAuthenticated, new ListScheduleController().handle)
+
+router.delete(
+  "/schedule",
+  isAuthenticated,
+  new FinishScheduleController().handle
+)
 
 export { router }
