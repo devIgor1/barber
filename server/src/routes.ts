@@ -10,6 +10,7 @@ import { UpdateHaircutController } from "./controllers/haircut/UpdateHaircutCont
 import { CheckSubscriptionController } from "./controllers/haircut/CheckSubscriptionController"
 import { CountHaircutsController } from "./controllers/haircut/CountHaircutsController"
 import { HaircutDetailsController } from "./controllers/haircut/HaircutDetailsController"
+import { NewScheduleController } from "./controllers/schedule/NewScheduleController"
 
 const router = Router()
 
@@ -52,5 +53,9 @@ router.get(
   isAuthenticated,
   new HaircutDetailsController().handle
 )
+
+// --SCHEDULE ROUTES-- //
+
+router.post("/schedule", isAuthenticated, new NewScheduleController().handle)
 
 export { router }
