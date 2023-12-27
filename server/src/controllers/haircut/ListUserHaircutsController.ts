@@ -4,10 +4,11 @@ import { ListUserHaircutsService } from "../../services/haircut/ListUserHaircuts
 class ListUserHaircutsController {
   async handle(req: Request, res: Response) {
     const userId = req.userId
+    const status = req.query.status as string
 
     const listUserHaircuts = new ListUserHaircutsService()
 
-    const userHaircuts = await listUserHaircuts.execute({ userId })
+    const userHaircuts = await listUserHaircuts.execute({ userId, status })
 
     return res.json(userHaircuts)
   }
