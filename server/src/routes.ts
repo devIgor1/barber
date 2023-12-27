@@ -6,6 +6,7 @@ import { isAuthenticated } from "./middlewares/isAuthenticated"
 import { UpdateUserController } from "./controllers/user/UpdateUserController"
 import { CreateHaircutController } from "./controllers/haircut/CreateHaircutController"
 import { ListUserHaircutsController } from "./controllers/haircut/ListUserHaircutsController"
+import { UpdateHaircutController } from "./controllers/haircut/UpdateHaircutController"
 
 const router = Router()
 
@@ -28,5 +29,7 @@ router.get(
   isAuthenticated,
   new ListUserHaircutsController().handle
 )
+
+router.put("/haircut", isAuthenticated, new UpdateHaircutController().handle)
 
 export { router }
