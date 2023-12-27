@@ -6,7 +6,7 @@ interface ListScheduleRequest {
 
 class ListScheduleService {
   async execute({ userId }: ListScheduleRequest) {
-    const schedule = await prisma.service.findFirst({
+    const schedule = await prisma.service.findMany({
       where: {
         userId: userId,
       },
