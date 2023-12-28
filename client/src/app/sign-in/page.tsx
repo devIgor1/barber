@@ -34,7 +34,7 @@ const SignIn = () => {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function handleSignIn(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
 
@@ -46,7 +46,7 @@ const SignIn = () => {
           <div className="w-full px-2">
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(onSubmit)}
+                onSubmit={form.handleSubmit(handleSignIn)}
                 className="space-y-4 w-full"
               >
                 <FormField

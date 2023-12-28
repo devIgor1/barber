@@ -31,13 +31,9 @@ const formSchema = z.object({
 const SignUp = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: "",
-      password: "",
-    },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function handleSignUp(values: z.infer<typeof formSchema>) {
     console.log(values)
   }
 
@@ -49,7 +45,7 @@ const SignUp = () => {
           <div className="w-full px-2">
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(onSubmit)}
+                onSubmit={form.handleSubmit(handleSignUp)}
                 className="space-y-4 w-full"
               >
                 <FormField
