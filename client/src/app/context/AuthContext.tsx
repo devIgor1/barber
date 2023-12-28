@@ -1,8 +1,10 @@
 "use client"
 
 import { createContext, ReactNode, useState } from "react"
-import { destroyCookie } from "nookies"
+import { destroyCookie, setCookie } from "nookies"
 import Router from "next/router"
+import { api } from "../services/apiClient"
+import { useRouter } from "next/navigation"
 
 interface AuthContextData {
   user: UserProps | undefined
@@ -41,10 +43,33 @@ export function signOut() {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<UserProps>()
+  const [user, setUser] = useState<UserProps | any>()
   const isAuthenticated = !!user
+  const router = useRouter()
 
-  async function signIn({ email, password }: SignInProps) {}
+  async function signIn({ email, password }: SignInProps) {
+    try {
+      const response = await api.post("/session", {
+        email,
+        password,
+      })
+
+      const { id, name, token, subscriptions, address } = response.data
+
+      setCookie(undefined, "@barber.token", token, {
+        maxAge: 60 * 60 * 24 * 30,
+        path: "/",
+      })
+
+      setUser({ id, name, email, address, subscriptions })
+
+      api.defaults.headers.common["Authorization"] = `Bearer ${token}`
+
+      router.push("/dashboard")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated, signIn }}>
