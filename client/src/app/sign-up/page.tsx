@@ -122,7 +122,7 @@ const SignUp = () => {
               <h1>
                 Member already?{" "}
                 <Link
-                  href="/sign-up"
+                  href="/sign-in"
                   className="text-[#FFF200] hover:underline"
                 >
                   Log in
