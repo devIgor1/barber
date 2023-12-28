@@ -41,7 +41,7 @@ const SignUp = () => {
   return (
     <>
       <div className="bg-zinc-950 flex-center min-h-screen w-full">
-        <div className="flex-center flex-col gap-9">
+        <div className="flex-center flex-col gap-9 max-w-[500px] w-full">
           <Logo />
           <div className="w-full px-2">
             <Form {...form}>
