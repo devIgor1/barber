@@ -25,7 +25,7 @@ const formSchema = z.object({
   }),
 })
 
-const SignIn = () => {
+const SignUp = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -49,6 +49,26 @@ const SignIn = () => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4 w-full"
               >
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="text-xl text-white">
+                        Barbershop Name
+                      </FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          className="w-full text-white"
+                          type="email"
+                        />
+                      </FormControl>
+
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <FormField
                   control={form.control}
                   name="email"
@@ -100,12 +120,12 @@ const SignIn = () => {
             </Form>
             <div className="flex-center mt-2 text-white">
               <h1>
-                Don't have an account?{" "}
+                Member already?{" "}
                 <Link
                   href="/sign-up"
                   className="text-[#FFF200] hover:underline"
                 >
-                  Sign up
+                  Log in
                 </Link>{" "}
                 now!
               </h1>
@@ -117,4 +137,4 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default SignUp
