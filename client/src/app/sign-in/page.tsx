@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 const formSchema = z.object({
   email: z.string().min(2, {
@@ -42,7 +43,7 @@ const SignIn = () => {
       <div className="bg-zinc-950 flex-center min-h-screen w-full">
         <div className="flex-center flex-col gap-9">
           <Logo />
-          <div className="w-full">
+          <div className="md:w-full">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -97,6 +98,18 @@ const SignIn = () => {
                 </Button>
               </form>
             </Form>
+            <div className="flex-center mt-2 text-white">
+              <h1>
+                Don't have an account?{" "}
+                <Link
+                  href="/sign-up"
+                  className="text-[#FFF200] hover:underline"
+                >
+                  Sign up
+                </Link>{" "}
+                now!
+              </h1>
+            </div>
           </div>
         </div>
       </div>
