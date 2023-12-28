@@ -13,6 +13,7 @@ import { HaircutDetailsController } from "./controllers/haircut/HaircutDetailsCo
 import { NewScheduleController } from "./controllers/schedule/NewScheduleController"
 import { ListScheduleController } from "./controllers/schedule/ListScheduleController"
 import { FinishScheduleController } from "./controllers/schedule/FinishScheduleController"
+import { ListAllUserController } from "./controllers/user/ListAllUsersController"
 
 const router = Router()
 
@@ -21,6 +22,8 @@ const router = Router()
 router.post("/users", new CreateUserController().handle)
 
 router.post("/session", new AuthUserController().handle)
+
+router.get("/users", new ListAllUserController().handle)
 
 router.get("/me", isAuthenticated, new UserDetailController().handle)
 

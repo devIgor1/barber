@@ -15,6 +15,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
 
 const formSchema = z.object({
   name: z.string().min(1, {
@@ -29,6 +31,8 @@ const formSchema = z.object({
 })
 
 const SignUp = () => {
+  const { signUp } = useContext(AuthContext)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,7 +42,9 @@ const SignUp = () => {
     },
   })
 
-  function handleSignUp(values: z.infer<typeof formSchema>) {}
+  function handleSignUp(data: z.infer<typeof formSchema>) {
+    signUp(data)
+  }
 
   return (
     <>

@@ -10,6 +10,7 @@ interface AuthContextData {
   user: UserProps | undefined
   isAuthenticated: boolean
   signIn: (credentials: SignInProps) => Promise<void>
+  signUp: (credentials: SignUpProps) => Promise<void>
 }
 
 interface UserProps {
@@ -27,6 +28,12 @@ interface SubscriptionProps {
 }
 
 interface SignInProps {
+  email: string
+  password: string
+}
+
+interface SignUpProps {
+  name: string
   email: string
   password: string
 }
@@ -71,8 +78,22 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  async function signUp({ name, email, password }: SignUpProps) {
+    try {
+      const response = await api.post("/users", {
+        name,
+        email,
+        password,
+      })
+
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signUp }}>
       {children}
     </AuthContext.Provider>
   )
