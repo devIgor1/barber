@@ -42,8 +42,8 @@ const SignUp = () => {
     },
   })
 
-  function handleSignUp(data: z.infer<typeof formSchema>) {
-    signUp(data)
+  async function handleSignUp(data: z.infer<typeof formSchema>) {
+    await signUp(data)
   }
 
   return (

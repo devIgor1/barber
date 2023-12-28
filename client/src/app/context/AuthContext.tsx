@@ -11,6 +11,7 @@ interface AuthContextData {
   isAuthenticated: boolean
   signIn: (credentials: SignInProps) => Promise<void>
   signUp: (credentials: SignUpProps) => Promise<void>
+  logoutUser: () => Promise<void>
 }
 
 interface UserProps {
@@ -80,20 +81,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   async function signUp({ name, email, password }: SignUpProps) {
     try {
-      const response = await api.post("/users", {
+      await api.post("/users", {
         name,
         email,
         password,
       })
 
-      console.log(response.data)
+      router.push("/sign-in")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function logoutUser() {
+    try {
+      destroyCookie(null, "@barber.token", { path: "/" })
+      router.push("/")
+      setUser(null)
     } catch (error) {
       console.log(error)
     }
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated, signIn, signUp }}>
+    <AuthContext.Provider
+      value={{ user, isAuthenticated, signIn, signUp, logoutUser }}
+    >
       {children}
     </AuthContext.Provider>
   )
