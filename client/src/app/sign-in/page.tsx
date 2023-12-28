@@ -38,8 +38,8 @@ const SignIn = () => {
     },
   })
 
-  function handleSignIn(values: z.infer<typeof formSchema>) {
-    signIn(values)
+  async function handleSignIn(data: z.infer<typeof formSchema>) {
+    await signIn(data)
   }
 
   return (
