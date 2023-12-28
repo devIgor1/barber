@@ -31,11 +31,14 @@ const formSchema = z.object({
 const SignUp = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+    },
   })
 
-  function handleSignUp(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
+  function handleSignUp(values: z.infer<typeof formSchema>) {}
 
   return (
     <>
