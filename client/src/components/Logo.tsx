@@ -2,9 +2,10 @@ import Image from "next/image"
 
 const Logo = () => {
   return (
-    <div className="flex items-center justify-center bg-transparent">
+    <div className="flex-center">
       <Image
         src="/images/logo.png"
+        quality={100}
         width={75}
         height={70}
         alt="logo"
