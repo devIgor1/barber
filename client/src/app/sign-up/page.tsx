@@ -17,6 +17,9 @@ import { Input } from "@/components/ui/input"
 import Link from "next/link"
 
 const formSchema = z.object({
+  name: z.string().min(1, {
+    message: "Barbershop name is required.",
+  }),
   email: z.string().min(2, {
     message: "Email is required.",
   }),
@@ -51,7 +54,7 @@ const SignUp = () => {
               >
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-xl text-white">
@@ -61,7 +64,7 @@ const SignUp = () => {
                         <Input
                           {...field}
                           className="w-full text-white"
-                          type="email"
+                          type="text"
                         />
                       </FormControl>
 
