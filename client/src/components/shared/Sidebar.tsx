@@ -14,9 +14,7 @@ const Sidebar = () => {
         </span>
       </Link>
       <Separator className="mt-5 opacity-10" />
-      <div className="text-white flex-center flec-col">
-        <NavItems />
-      </div>
+      <NavItems className="flex-center text-xl text-white hover:bg-zinc-800 w-full p-4 duration-300" />
     </div>
   )
 }

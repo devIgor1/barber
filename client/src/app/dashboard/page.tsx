@@ -2,8 +2,7 @@ import MobileNav from "@/components/shared/MobileNav"
 
 const Dashboard = () => {
   return (
-    <div className="bg-secondary w-full min-h-screen">
-      <h1>Hello I'm DASHBOARD</h1>
+    <div className="bg-zinc-800 w-full min-h-screen">
       <nav className="block md:hidden">
         <MobileNav />
       </nav>
