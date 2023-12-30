@@ -1,6 +1,6 @@
 "use client"
 
-import Logo from "@/components/Logo"
+import Logo from "@/components/shared/Logo"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
