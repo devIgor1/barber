@@ -118,7 +118,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function logoutUser() {
     try {
       destroyCookie(null, "@barber.token", { path: "/" })
-      router.push("/")
+      router.push("/sign-in")
       setUser(null)
     } catch (error) {
       console.log(error)
