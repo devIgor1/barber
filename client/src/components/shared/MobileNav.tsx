@@ -14,7 +14,7 @@ import NavItems from "./NavItems"
 const MobileNav = () => {
   return (
     <>
-      <nav className="block md:hidden flex-between p-4">
+      <nav className="block md:hidden flex-between p-6 bg-[#09090B]">
         <Link href="/dashboard" className="flex-center gap-2">
           <h1 className="text-3xl font-semibold text-[#FFF200] text-shadow">
             BARBER
@@ -31,11 +31,11 @@ const MobileNav = () => {
           </SheetTrigger>
           <SheetContent side="top" className="bg-zinc-200">
             <NavItems className="flex items-start text-xl text-black hover:bg-zinc-800 hover:text-white w-full p-4 duration-300" />
-            <Separator />
+            <Separator className="w-full bg-black" />
           </SheetContent>
         </Sheet>
       </nav>
-      <Separator className="mt-5 opacity-10" />
+      <Separator className=" opacity-10" />
     </>
   )
 }
