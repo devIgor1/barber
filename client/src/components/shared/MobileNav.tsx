@@ -30,7 +30,8 @@ const MobileNav = () => {
             </span>
           </SheetTrigger>
           <SheetContent side="top" className="bg-zinc-200">
-            <NavItems className="flex-center text-xl text-black hover:bg-zinc-800 hover:text-white w-full p-4 duration-300" />
+            <NavItems className="flex items-start text-xl text-black hover:bg-zinc-800 hover:text-white w-full p-4 duration-300" />
+            <Separator />
           </SheetContent>
         </Sheet>
       </nav>
