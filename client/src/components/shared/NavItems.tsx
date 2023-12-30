@@ -1,5 +1,6 @@
 import navLinks, { NavLinksProps } from "@/constants"
 import Link from "next/link"
+import { Separator } from "../ui/separator"
 
 interface NavItemsProps {
   className?: string
@@ -7,15 +8,18 @@ interface NavItemsProps {
 
 const NavItems = ({ className }: NavItemsProps) => {
   return (
-    <ul className="flex-center w-full flex-col gap-10 mt-14">
+    <nav className="mt-10">
       {navLinks.map((link: NavLinksProps) => (
-        <Link href={link.route} className={className} key={link.route}>
-          {link.icon({ className: "mr-2" })}
-          {/* Here I'm rendering the icon directly*/}
-          <li>{link.name}</li>
-        </Link>
+        <ul key={link.route} className="flex-center w-full flex-col">
+          <Link href={link.route} className={className}>
+            {link.icon({ className: "mr-2" })}
+            {/* Here I'm rendering the icon directly*/}
+            <li>{link.name}</li>
+          </Link>
+          <Separator key={link.route} className="opacity-10" />
+        </ul>
       ))}
-    </ul>
+    </nav>
   )
 }
 
