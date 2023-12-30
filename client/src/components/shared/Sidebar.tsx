@@ -19,7 +19,7 @@ const Sidebar = () => {
       <Separator className="mt-5 opacity-10" />
       <NavItems className="flex items-start text-xl text-white hover:bg-zinc-800 w-full p-4 duration-300" />
       <footer className="flex text-white absolute bottom-0 w-full p-4">
-        <LogoutButton />
+        <LogoutButton className="flex-center gap-3 border-2 border-white p-2 rounded-lg hover:scale-95 duration-300" />
       </footer>
     </div>
   )

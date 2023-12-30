@@ -10,6 +10,7 @@ import { FiMenu } from "react-icons/fi"
 import { Separator } from "../ui/separator"
 import Link from "next/link"
 import NavItems from "./NavItems"
+import LogoutButton from "./LogoutButton"
 
 const MobileNav = () => {
   return (
@@ -32,6 +33,9 @@ const MobileNav = () => {
           <SheetContent side="top" className="bg-zinc-200">
             <NavItems className="flex items-start text-xl text-black hover:bg-zinc-800 hover:text-white w-full p-4 duration-300" />
             <Separator className="w-full bg-black" />
+            <div>
+              <LogoutButton />
+            </div>
           </SheetContent>
         </Sheet>
       </nav>
