@@ -1,15 +1,14 @@
 import MobileNav from "@/components/shared/MobileNav"
 
-const Dashboard = () => {
+const Profile = () => {
   return (
-    <div>
+    <>
       <nav className="block md:hidden">
         <MobileNav />
       </nav>
-
-      <h1 className="p-5">Dashboard</h1>
-    </div>
+      <h1 className="p-5">Haircuts</h1>
+    </>
   )
 }
 
-export default Dashboard
+export default Profile

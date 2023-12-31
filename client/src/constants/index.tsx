@@ -8,8 +8,8 @@ export interface NavLinksProps {
 
 const navLinks: NavLinksProps[] = [
   { name: "Schedule", icon: FiClipboard, route: "/dashboard" },
-  { name: "Haircuts", icon: FiScissors, route: "/haircuts" },
-  { name: "My Profile", icon: FiUser, route: "/profile" },
+  { name: "Haircuts", icon: FiScissors, route: "/dashboard/haircuts" },
+  { name: "My Profile", icon: FiUser, route: "/dashboard/profile" },
 ]
 
 export default navLinks
