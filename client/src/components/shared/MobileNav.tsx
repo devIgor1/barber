@@ -32,7 +32,6 @@ const MobileNav = () => {
           </SheetContent>
         </Sheet>
       </nav>
-      <Separator className=" opacity-10" />
     </>
   )
 }
