@@ -91,7 +91,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         path: "/",
       })
 
-      setUser({ id, name, email, address, subscriptions })
+      setUser({ id, name, email, address, subscriptions, token })
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`
 

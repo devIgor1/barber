@@ -19,8 +19,8 @@ export function setupApi(ctx = undefined) {
     },
     (error: AxiosError) => {
       if (error.response?.status === 401) {
-        if (typeof window !== undefined) {
-          signOut()
+        if (typeof window !== null) {
+          signOut
         } else {
           return Promise.reject(new AuthTokenError())
         }

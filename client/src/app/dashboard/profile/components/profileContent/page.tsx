@@ -1,19 +1,8 @@
-"use client"
-
-import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
-import { Separator } from "@radix-ui/react-separator"
+import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 
-const ProfileContent = async () => {
-  try {
-    const response = await api.get("/me")
-
-    console.log(response.data)
-  } catch (error) {
-    console.log(error)
-  }
-
+const ProfileContent = () => {
   return (
     <>
       <nav className="block md:hidden">
