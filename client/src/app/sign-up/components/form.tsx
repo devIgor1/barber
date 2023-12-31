@@ -122,7 +122,7 @@ const SignUpForm = () => {
                   type="submit"
                   className="w-full"
                 >
-                  Sign In
+                  Sign Up
                 </Button>
               </form>
             </Form>
