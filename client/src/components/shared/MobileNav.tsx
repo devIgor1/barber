@@ -10,7 +10,7 @@ const MobileNav = () => {
     <>
       <nav className="block md:hidden flex-between p-6 bg-zinc-900">
         <Link href="/dashboard" className="flex-center gap-2">
-          <h1 className="text-3xl font-semibold text-[#FFF200] text-shadow">
+          <h1 className="text-3xl font-semibold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
             BARBER
           </h1>
           <span className="bg-white text-black relative text-xl top-6 right-9 font-bold rounded-lg px-1 hover:rotate-12 duration-300">
