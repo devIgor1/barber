@@ -9,7 +9,7 @@ export function setupApi(ctx = undefined) {
   const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
     headers: {
-      Authorization: `Bearer ${cookies["@barber.token"]}`,
+      Authorization: `Bearer${cookies["@barber.token"]}`,
     },
   })
 
@@ -19,7 +19,7 @@ export function setupApi(ctx = undefined) {
     },
     (error: AxiosError) => {
       if (error.response?.status === 401) {
-        if (typeof window !== null) {
+        if (typeof window !== undefined) {
           signOut
         } else {
           return Promise.reject(new AuthTokenError())

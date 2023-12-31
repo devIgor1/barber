@@ -18,10 +18,8 @@ export function isAuthenticated(
 
   const [, token] = authToken.split(" ")
 
-  const jwtSecret = process.env.JWT_SECRET
-
   try {
-    const { sub } = verify(token, jwtSecret) as PayLoad
+    const { sub } = verify(token, process.env.JWT_SECRET) as PayLoad
 
     req.userId = sub
 

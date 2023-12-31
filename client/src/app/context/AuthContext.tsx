@@ -5,6 +5,7 @@ import { destroyCookie, parseCookies, setCookie } from "nookies"
 import Router from "next/router"
 import { api } from "../services/apiClient"
 import { useRouter } from "next/navigation"
+import axios from "axios"
 
 interface AuthContextData {
   user: UserProps | undefined
@@ -52,6 +53,7 @@ export function signOut() {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<UserProps | any>()
+
   const isAuthenticated = !!user
   const router = useRouter()
 
@@ -60,7 +62,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (token) {
       api
-        .get("/me")
+        .get("/me", {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        })
         .then((response) => {
           const { id, name, address, email, subscriptions } = response.data
           setUser({
@@ -91,7 +97,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         path: "/",
       })
 
-      setUser({ id, name, email, address, subscriptions, token })
+      setUser({ id, name, email, address, subscriptions })
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
