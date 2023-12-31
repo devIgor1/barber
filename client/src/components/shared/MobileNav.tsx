@@ -8,7 +8,7 @@ import LogoutButton from "./LogoutButton"
 const MobileNav = () => {
   return (
     <>
-      <nav className="block md:hidden flex-between p-6 bg-[#09090B]">
+      <nav className="block md:hidden flex-between p-6 bg-zinc-900">
         <Link href="/dashboard" className="flex-center gap-2">
           <h1 className="text-3xl font-semibold text-[#FFF200] text-shadow">
             BARBER
@@ -32,6 +32,7 @@ const MobileNav = () => {
           </SheetContent>
         </Sheet>
       </nav>
+      <Separator className="opacity-30" />
     </>
   )
 }
