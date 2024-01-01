@@ -44,7 +44,13 @@ export default async function Profile(user: UserProps) {
             <div>
               <label className="text-white text-xl mb-1">Current Plan</label>
               <div className="flex-between mt-2 text-lg">
-                <p className="text-[#4dffb4]">
+                <p
+                  className={
+                    userData.premium
+                      ? "text-[#fba931] font-semibold"
+                      : "text-[#4dffb4]"
+                  }
+                >
                   {userData.premium ? "Premium" : "Free"}
                 </p>
                 <Link

@@ -23,7 +23,6 @@ export default async function getUser(user: UserProps) {
 
       if (response.data) {
         user = {
-          ...user,
           id: response.data.id,
           name: response.data.name,
           email: response.data.email,
