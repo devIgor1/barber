@@ -49,7 +49,7 @@ export default async function Profile(user: UserProps) {
                 </p>
                 <Link
                   href="/plans"
-                  className="bg-green-500 text-white font-bold p-2 rounded-lg hover:bg-green-600 duration-300"
+                  className="bg-green-500 text-white text-shadow font-bold p-2 rounded-lg hover:bg-green-600 duration-300"
                 >
                   Change Plan
                 </Link>
@@ -57,7 +57,7 @@ export default async function Profile(user: UserProps) {
             </div>
             <Separator className="mt-4" />
             <div className="flex-center w-full mt-5">
-              <button className="bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300">
+              <button className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300">
                 Save
               </button>
             </div>
