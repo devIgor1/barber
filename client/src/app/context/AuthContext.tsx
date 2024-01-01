@@ -101,6 +101,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`
 
       router.push("/dashboard")
+      router.refresh()
     } catch (error) {
       console.log(error)
     }
@@ -123,6 +124,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function logoutUser() {
     try {
       destroyCookie(null, "@barber.token", { path: "/" })
+      router.refresh()
       router.push("/sign-in")
       setUser(null)
     } catch (error) {
