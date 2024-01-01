@@ -5,7 +5,6 @@ import { destroyCookie, parseCookies, setCookie } from "nookies"
 import Router from "next/router"
 import { api } from "../services/apiClient"
 import { useRouter } from "next/navigation"
-import axios from "axios"
 
 interface AuthContextData {
   user: UserProps | undefined
