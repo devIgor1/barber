@@ -9,7 +9,7 @@ export function setupApi(ctx = undefined) {
   const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
     headers: {
-      Authorization: `Bearer${cookies["@barber.token"]}`,
+      Authorization: `Bearer ${cookies["@barber.token"]}`,
     },
   })
 

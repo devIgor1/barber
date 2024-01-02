@@ -1,4 +1,4 @@
-import getUser from "../actions"
+import getUser from "../../../helpers/actions"
 import ProfileContent from "./components/ProfileContent"
 
 interface UserProps {
@@ -7,6 +7,7 @@ interface UserProps {
   email: string
   address: string | null
   premium: boolean
+  token: string
 }
 
 export default async function Profile(user: UserProps) {
@@ -14,7 +15,7 @@ export default async function Profile(user: UserProps) {
 
   return (
     <>
-      <ProfileContent user={userData} premium={userData.premium} />
+      <ProfileContent data={userData} premium={userData.premium} />
     </>
   )
 }

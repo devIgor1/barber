@@ -1,12 +1,13 @@
 "use client"
 
+import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 import { useState } from "react"
 
 interface ProfileProps {
-  user: UserProps
+  data: UserProps
   premium: boolean
 }
 
@@ -15,11 +16,27 @@ interface UserProps {
   name: string
   email: string
   address: string | null
+  token: string
 }
 
-export default async function ProfileContent(user: ProfileProps) {
-  const [name, setName] = useState<string>(user && user.user?.name)
-  const [address, setAddress] = useState<string>(user && user.user?.address)
+export default function ProfileContent(user: ProfileProps) {
+  const [name, setName] = useState<string>(user && user.data?.name)
+  const [address, setAddress] = useState<string>(user && user.data?.address)
+
+  async function handleUpdateUser() {
+    try {
+      await api.put("/user", {
+        headers: {
+          Authorization: "Bearer " + user.data.token,
+        },
+        name: name,
+        address: address,
+      })
+      alert("Data has been successfully updated.")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -74,7 +91,11 @@ export default async function ProfileContent(user: ProfileProps) {
             </div>
             <Separator className="mt-4" />
             <div className="flex-center w-full mt-5">
-              <button className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300">
+              <button
+                type="submit"
+                onClick={handleUpdateUser}
+                className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300"
+              >
                 Save
               </button>
             </div>
