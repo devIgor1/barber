@@ -2,6 +2,8 @@
 
 import MobileNav from "@/components/shared/MobileNav"
 import { CiCirclePlus } from "react-icons/ci"
+import { Switch } from "@/components/ui/switch"
+import { IoIosPricetag } from "react-icons/io"
 
 export default function HaircutsContent() {
   return (
@@ -14,15 +16,26 @@ export default function HaircutsContent() {
           Haircuts Models
         </h1>
         <div className="wrapper mb-5">
-          <div className="flex-between ">
-            <button className="text-white bg-zinc-800 p-2 rounded-lg flex-center gap-3">
+          <div className="flex-between">
+            <button className="text-white bg-zinc-800 p-2 rounded-lg flex-center gap-3 hover:bg-zinc-800/75 duration-300">
               New
               <CiCirclePlus size={25} />
             </button>
-            <button className="bg-green-500">Active</button>
+            <div className="flex-center gap-2">
+              <h1 className="text-white">Active</h1>
+              <Switch className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-red-500" />
+            </div>
           </div>
         </div>
-        <div className="bg-zinc-900/85 wrapper flex-center p-8 rounded-lg px-5"></div>
+        <div className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white">
+          <div className="flex-center gap-3">
+            <span className="text-amber-500 ">
+              <IoIosPricetag size={25} />
+            </span>
+            <h1>haircut#1</h1>
+          </div>
+          <p className="text-green-500">$10.00</p>
+        </div>
       </div>
     </>
   )
