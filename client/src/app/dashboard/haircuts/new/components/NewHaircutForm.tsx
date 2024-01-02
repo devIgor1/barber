@@ -1,11 +1,7 @@
 "use client"
 
 import MobileNav from "@/components/shared/MobileNav"
-import { CiCirclePlus } from "react-icons/ci"
-import { Switch } from "@/components/ui/switch"
-import { IoIosPricetag } from "react-icons/io"
 import Link from "next/link"
-import { MdBlock } from "react-icons/md"
 
 interface NewHaircutProps {
   subscription: boolean
