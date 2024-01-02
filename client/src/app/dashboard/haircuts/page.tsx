@@ -1,12 +1,10 @@
 import MobileNav from "@/components/shared/MobileNav"
+import HaircutsContent from "./components/HaircutsContent"
 
 const Profile = () => {
   return (
     <>
-      <nav className="block md:hidden">
-        <MobileNav />
-      </nav>
-      <h1 className="p-5">Haircuts</h1>
+      <HaircutsContent />
     </>
   )
 }
