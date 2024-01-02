@@ -1,6 +1,3 @@
-import MobileNav from "@/components/shared/MobileNav"
-import { Separator } from "@/components/ui/separator"
-import Link from "next/link"
 import getUser from "../actions"
 import ProfileContent from "./components/ProfileContent"
 
