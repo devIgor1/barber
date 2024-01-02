@@ -13,9 +13,5 @@ interface UserProps {
 export default async function Profile(user: UserProps) {
   const userData = await getUser(user)
 
-  return (
-    <>
-      <ProfileContent data={userData} premium={userData.premium} />
-    </>
-  )
+  return <ProfileContent data={userData} premium={userData.premium} />
 }
