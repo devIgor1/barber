@@ -13,7 +13,6 @@ const NavItems = ({ className }: NavItemsProps) => {
         <ul key={link.route} className="flex-center w-full flex-col">
           <Link href={link.route} className={className}>
             {link.icon({ className: "mr-2" })}
-            {/* Here I'm rendering the icon directly*/}
             <li>{link.name}</li>
           </Link>
           <Separator key={link.route} className="opacity-10" />

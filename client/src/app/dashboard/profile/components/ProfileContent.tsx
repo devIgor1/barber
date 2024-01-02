@@ -4,7 +4,8 @@ import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { FormEvent, useState } from "react"
 
 interface ProfileProps {
   data: UserProps
@@ -25,13 +26,18 @@ export default function ProfileContent(user: ProfileProps) {
 
   async function handleUpdateUser() {
     try {
-      await api.put("/user", {
-        headers: {
-          Authorization: "Bearer " + user.data.token,
+      await api.put(
+        "/user",
+        {
+          name: name,
+          address: address,
         },
-        name: name,
-        address: address,
-      })
+        {
+          headers: {
+            Authorization: "Bearer " + user.data.token,
+          },
+        }
+      )
       alert("Data has been successfully updated.")
     } catch (error) {
       console.log(error)
@@ -92,7 +98,6 @@ export default function ProfileContent(user: ProfileProps) {
             <Separator className="mt-4" />
             <div className="flex-center w-full mt-5">
               <button
-                type="submit"
                 onClick={handleUpdateUser}
                 className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300"
               >
