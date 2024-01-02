@@ -4,7 +4,6 @@ import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import { useRouter } from "next/navigation"
 import { FormEvent, useState } from "react"
 
 interface ProfileProps {
@@ -24,7 +23,9 @@ export default function ProfileContent(user: ProfileProps) {
   const [name, setName] = useState<string>(user && user.data?.name)
   const [address, setAddress] = useState<string>(user && user.data?.address)
 
-  async function handleUpdateUser() {
+  async function handleUpdateUser(e: FormEvent) {
+    e.preventDefault()
+
     try {
       await api.put(
         "/user",
