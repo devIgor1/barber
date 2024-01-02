@@ -5,8 +5,17 @@ import { CiCirclePlus } from "react-icons/ci"
 import { Switch } from "@/components/ui/switch"
 import { IoIosPricetag } from "react-icons/io"
 import Link from "next/link"
+import { MdBlock } from "react-icons/md"
 
-export default function NewHaircutForm() {
+interface NewHaircutProps {
+  subscription: boolean
+  count: number
+}
+
+export default function NewHaircutForm({
+  subscription,
+  count,
+}: NewHaircutProps) {
   return (
     <>
       <nav className="block md:hidden">
@@ -43,16 +52,21 @@ export default function NewHaircutForm() {
                 className="rounded-md outline-none p-1 md:p-2 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold"
               />
             </div>
-            <button className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full p-1 md:p-2 rounded-lg text-white font-semibold hover:scale-95 duration-300 mt-5">
+            <button
+              disabled={!subscription && count >= 3}
+              className="text-shadow enabled:bg-gradient-to-r from-yellow-400 to-amber-500 w-full p-1 md:p-2 rounded-lg text-white font-semibold hover:scale-95 duration-300 mt-5 disabled:hidden"
+            >
               Register
             </button>
           </form>
 
-          <p className="text-base text-center mt-4">
-            It looks like you've reached your limit on cuts. Consider going
-            <span className="text-green-500"> premium</span> for unlimited
-            access.
-          </p>
+          {!subscription && count >= 3 && (
+            <p className="text-base text-center mt-4">
+              It looks like you've reached your limit on cuts. Consider going
+              <span className="text-green-500"> premium</span> for unlimited
+              access.
+            </p>
+          )}
         </div>
       </div>
     </>

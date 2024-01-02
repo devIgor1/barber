@@ -1,6 +1,6 @@
 import HaircutsContent from "./components/HaircutsContent"
 
-const Profile = () => {
+const Haircuts = async () => {
   return (
     <>
       <HaircutsContent />
@@ -8,4 +8,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Haircuts

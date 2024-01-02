@@ -1,4 +1,4 @@
-import getUser from "../../../helpers/actions"
+import getUser from "../../../helpers/getUser"
 import ProfileContent from "./components/ProfileContent"
 
 interface UserProps {
