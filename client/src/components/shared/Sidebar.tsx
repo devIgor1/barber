@@ -5,7 +5,7 @@ import LogoutButton from "./LogoutButton"
 
 const Sidebar = () => {
   return (
-    <div className="hidden md:block h-screen w-full max-w-[300px] bg-zinc-900">
+    <div className="hidden md:block min-h-screen w-full max-w-[300px] bg-zinc-900 relative">
       <div className="p-4">
         <Link href="/dashboard" className="flex-center gap-2">
           <h1 className="text-5xl font-semibold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
