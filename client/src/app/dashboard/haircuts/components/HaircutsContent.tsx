@@ -5,7 +5,7 @@ import { CiCirclePlus } from "react-icons/ci"
 import { Switch } from "@/components/ui/switch"
 import { IoIosPricetag } from "react-icons/io"
 import Link from "next/link"
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 
 interface HaircutsItem {
   id: string
@@ -17,10 +17,25 @@ interface HaircutsItem {
 
 interface HaircutsProps {
   haircuts: HaircutsItem[]
+  disabledHaircuts: HaircutsItem[]
 }
 
-export default function HaircutsContent({ haircuts }: HaircutsProps) {
+export default function HaircutsContent({
+  haircuts,
+  disabledHaircuts,
+}: HaircutsProps) {
   const [haircutList, setHaircutList] = useState(haircuts || [])
+  const [disableHaircut, setDisableHaircut] = useState("enabled")
+
+  async function handleChangeStatus(e: any) {
+    if (e.target.value === "disabled") {
+      setDisableHaircut("enabled")
+      setHaircutList(haircuts)
+    } else {
+      setHaircutList(disabledHaircuts)
+      setDisableHaircut("disabled")
+    }
+  }
 
   return (
     <>
@@ -41,7 +56,12 @@ export default function HaircutsContent({ haircuts }: HaircutsProps) {
             </Link>
             <div className="flex-center gap-2">
               <h1 className="text-white">Active</h1>
-              <Switch className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-zinc-600" />
+              <Switch
+                value={disableHaircut}
+                className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-zinc-600"
+                onClick={handleChangeStatus}
+                checked={disableHaircut === "disabled" ? false : true}
+              />
             </div>
           </div>
         </div>

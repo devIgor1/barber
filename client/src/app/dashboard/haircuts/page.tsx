@@ -11,13 +11,18 @@ interface HaircutsItem {
 
 interface HaircutsProps {
   haircuts: HaircutsItem[]
+  disabledHaircuts: HaircutsItem[]
 }
-const Haircuts = async ({ haircuts }: HaircutsProps) => {
-  const haircutsData = await getHaircuts({ haircuts })
+
+const Haircuts = async ({ haircuts, disabledHaircuts }: HaircutsProps) => {
+  const haircutsData = await getHaircuts({ haircuts, disabledHaircuts })
 
   return (
     <>
-      <HaircutsContent haircuts={haircutsData.haircuts} />
+      <HaircutsContent
+        haircuts={haircutsData.haircuts}
+        disabledHaircuts={haircutsData.disabledHaircuts}
+      />
     </>
   )
 }
