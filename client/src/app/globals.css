@@ -17,6 +17,12 @@
   .wrapper {
     @apply max-w-3xl w-full;
   }
+
+  .hide-arrow[type="number"]::-webkit-inner-spin-button,
+  .hide-arrow[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
 
 @layer base {

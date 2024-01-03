@@ -1,7 +1,21 @@
 "use client"
 
+import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import Link from "next/link"
+import { FormEvent, useRef, useState } from "react"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
+import { Input } from "@/components/shared/Input"
+
+const schema = z.object({
+  name: z.string().min(1, "Name is required"),
+  price: z.coerce.number().min(1, "Price is required"),
+})
+
+type FormData = z.infer<typeof schema>
 
 interface NewHaircutProps {
   subscription: boolean
@@ -12,6 +26,27 @@ export default function NewHaircutForm({
   subscription,
   count,
 }: NewHaircutProps) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(schema),
+  })
+
+  const router = useRouter()
+
+  async function handleRegisterHaircut(data: FormData) {
+    try {
+      await api.post("/haircut", data)
+
+      alert("Haircut registration successful")
+      router.push("/dashboard/haircuts")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <nav className="block md:hidden">
@@ -33,24 +68,34 @@ export default function NewHaircutForm({
           <h1 className="text-2xl md:text-3xl bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent font-semibold">
             New Haircut
           </h1>
-          <form className="wrapper mt-5">
-            <div className="flex flex-col mb-6">
+          <form
+            className="wrapper mt-5"
+            onSubmit={handleSubmit(handleRegisterHaircut)}
+          >
+            <div className="flex flex-col mb-2">
               <label className="text-white text-xl mb-1">Name</label>
-              <input
+              <Input
                 type="text"
-                className="rounded-md outline-none  p-1 md:p-2 mb-5 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold text-black"
+                className="rounded-md outline-none  p-2 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold text-black"
+                error={errors.name?.message}
+                name="name"
+                register={register}
               />
             </div>
             <div className="flex flex-col">
               <label className="text-white text-xl mb-1">Price</label>
-              <input
-                type="text"
-                className="rounded-md outline-none p-1 md:p-2 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold"
+              <Input
+                type="number"
+                className="hide-arrow rounded-md outline-none p-2 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold text-black"
+                error={errors.price?.message}
+                name="price"
+                register={register}
               />
             </div>
             <button
+              type="submit"
               disabled={!subscription && count >= 3}
-              className="text-shadow enabled:bg-gradient-to-r from-yellow-400 to-amber-500 w-full p-1 md:p-2 rounded-lg text-white font-semibold hover:scale-95 duration-300 mt-5 disabled:hidden"
+              className="text-shadow enabled:bg-gradient-to-r from-yellow-400 to-amber-500 w-full p-2 rounded-lg text-white font-semibold hover:scale-95 duration-300 mt-5 disabled:hidden"
             >
               Register
             </button>
