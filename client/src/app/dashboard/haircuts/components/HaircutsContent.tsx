@@ -5,8 +5,23 @@ import { CiCirclePlus } from "react-icons/ci"
 import { Switch } from "@/components/ui/switch"
 import { IoIosPricetag } from "react-icons/io"
 import Link from "next/link"
+import { useState } from "react"
 
-export default function HaircutsContent() {
+interface HaircutsItem {
+  id: string
+  name: string
+  price: number | string
+  status: boolean
+  userId: string
+}
+
+interface HaircutsProps {
+  haircuts: HaircutsItem[]
+}
+
+export default function HaircutsContent({ haircuts }: HaircutsProps) {
+  const [haircutList, setHaircutList] = useState(haircuts || [])
+
   return (
     <>
       <nav className="block md:hidden">
@@ -30,15 +45,21 @@ export default function HaircutsContent() {
             </div>
           </div>
         </div>
-        <div className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white">
-          <div className="flex-center gap-3">
-            <span className="text-amber-500 ">
-              <IoIosPricetag size={25} />
-            </span>
-            <h1>haircut#1</h1>
-          </div>
-          <p className="text-green-500">$10.00</p>
-        </div>
+        {haircutList.map((haircut) => (
+          <Link
+            key={haircut.id}
+            href={`/dashboard/haircut/${haircut.id}`}
+            className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white mb-4"
+          >
+            <div className="flex-center gap-3">
+              <span className="text-amber-500 ">
+                <IoIosPricetag size={25} />
+              </span>
+              <h1>{haircut.name}</h1>
+            </div>
+            <p className="text-green-500">${haircut.price}</p>
+          </Link>
+        ))}
       </div>
     </>
   )
