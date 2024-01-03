@@ -41,7 +41,7 @@ export default function HaircutsContent({ haircuts }: HaircutsProps) {
             </Link>
             <div className="flex-center gap-2">
               <h1 className="text-white">Active</h1>
-              <Switch className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-red-500" />
+              <Switch className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-zinc-600" />
             </div>
           </div>
         </div>
