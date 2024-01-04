@@ -12,7 +12,7 @@ import { Input } from "@/components/shared/Input"
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
-  price: z.coerce.number().min(1, "Price is required"),
+  price: z.string().regex(/^\d+(\.\d{1,2})?$/, "Price must be a valid number"),
 })
 
 type FormData = z.infer<typeof schema>
@@ -30,6 +30,7 @@ export default function NewHaircutForm({
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   })
@@ -40,8 +41,9 @@ export default function NewHaircutForm({
     try {
       await api.post("/haircut", data)
 
+      router.refresh()
       alert("Haircut registration successful")
-      router.push("/dashboard/haircuts")
+      reset()
     } catch (error) {
       console.log(error)
     }
@@ -85,7 +87,7 @@ export default function NewHaircutForm({
             <div className="flex flex-col">
               <label className="text-white text-xl mb-1">Price</label>
               <Input
-                type="number"
+                type="text"
                 className="hide-arrow rounded-md outline-none p-2 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold text-black"
                 error={errors.price?.message}
                 name="price"

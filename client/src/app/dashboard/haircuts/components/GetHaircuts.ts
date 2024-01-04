@@ -12,10 +12,12 @@ interface HaircutsItem {
 interface HaircutsProps {
   haircuts: HaircutsItem[]
   disabledHaircuts: HaircutsItem[]
-  
 }
 
-export default async function getHaircuts({ haircuts,  disabledHaircuts }: HaircutsProps) {
+export default async function getHaircuts({
+  haircuts,
+  disabledHaircuts,
+}: HaircutsProps) {
   const nextCookies = cookies()
   const token = nextCookies.get("@barber.token").value
 

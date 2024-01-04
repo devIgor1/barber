@@ -3,10 +3,11 @@
 import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Input } from "@/components/shared/Input"
 import { Separator } from "@/components/ui/separator"
+import { Router } from "next/router"
 
 interface EditHaircutProps {
   subscription: boolean
@@ -29,6 +30,8 @@ export default function EditHaircutContent({
 
   const [name, setName] = useState<any>("")
   const [price, setPrice] = useState<any>("")
+
+  const router = useRouter()
 
   useEffect(() => {
     const loadHaircutDetails = async () => {
@@ -58,6 +61,28 @@ export default function EditHaircutContent({
     }
     loadHaircutDetails()
   }, [id])
+
+  async function handleUpdateHaircut(e: FormEvent) {
+    e.preventDefault()
+
+    if (!name || !price) {
+      return
+    }
+
+    try {
+      const numericPrice = parseFloat(price)
+
+      await api.put("/haircut", {
+        name: name,
+        price: numericPrice,
+        haircutId: id,
+      })
+
+      alert("Haircut updated successfully")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -103,6 +128,7 @@ export default function EditHaircutContent({
             <Separator className="mt-4" />
             <div className="flex-center w-full mt-5">
               <button
+                onClick={handleUpdateHaircut}
                 disabled={!subscription && count >= 3}
                 className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300 disabled:hidden"
               >

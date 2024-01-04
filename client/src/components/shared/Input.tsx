@@ -10,6 +10,7 @@ interface InputProps {
   error?: string
   rules?: RegisterOptions
   className?: string
+  step?: string
 }
 
 export function Input({
