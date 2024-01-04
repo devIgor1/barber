@@ -2,10 +2,9 @@
 
 import MobileNav from "@/components/shared/MobileNav"
 import { CiCirclePlus } from "react-icons/ci"
-import { Switch } from "@/components/ui/switch"
 import { IoIosPricetag } from "react-icons/io"
 import Link from "next/link"
-import { ChangeEvent, useState } from "react"
+import { useState } from "react"
 
 interface HaircutsItem {
   id: string
@@ -20,22 +19,8 @@ interface HaircutsProps {
   disabledHaircuts: HaircutsItem[]
 }
 
-export default function HaircutsContent({
-  haircuts,
-  disabledHaircuts,
-}: HaircutsProps) {
+export default function HaircutsContent({ haircuts }: HaircutsProps) {
   const [haircutList, setHaircutList] = useState(haircuts || [])
-  const [disableHaircut, setDisableHaircut] = useState("enabled")
-
-  async function handleChangeStatus(e: any) {
-    if (e.target.value === "disabled") {
-      setDisableHaircut("enabled")
-      setHaircutList(haircuts)
-    } else {
-      setHaircutList(disabledHaircuts)
-      setDisableHaircut("disabled")
-    }
-  }
 
   return (
     <>
@@ -54,15 +39,6 @@ export default function HaircutsContent({
                 <CiCirclePlus size={25} />
               </button>
             </Link>
-            <div className="flex-center gap-2">
-              <h1 className="text-white">Active</h1>
-              <Switch
-                value={disableHaircut}
-                className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-zinc-600"
-                onClick={handleChangeStatus}
-                checked={disableHaircut === "disabled" ? false : true}
-              />
-            </div>
           </div>
         </div>
         {haircutList.map((haircut) => (

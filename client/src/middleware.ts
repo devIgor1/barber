@@ -36,5 +36,6 @@ export const config = {
     "/dashboard/profile",
     "/dashboard/haircuts",
     "/dashboard/haircuts/new",
+    "/dashboard/haircut/",
   ],
 }

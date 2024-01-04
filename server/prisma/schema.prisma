@@ -26,7 +26,7 @@ model User {
   services Service[]
 }
 
-model Subscription {
+model  Subscription {
   id String @id 
   status String
   priceId String
