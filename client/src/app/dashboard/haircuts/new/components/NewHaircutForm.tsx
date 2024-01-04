@@ -41,8 +41,8 @@ export default function NewHaircutForm({
     try {
       await api.post("/haircut", data)
 
-      router.refresh()
       alert("Haircut registration successful")
+      router.refresh()
       reset()
     } catch (error) {
       console.log(error)

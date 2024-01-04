@@ -1,6 +1,5 @@
 import getHaircutLimit from "@/helpers/getHaircutLimit"
 import EditHaircutContent from "./components/EditHaircutContent"
-import getHaircuts from "../../haircuts/components/GetHaircuts"
 
 interface EditHaircutProps {
   subscription: boolean

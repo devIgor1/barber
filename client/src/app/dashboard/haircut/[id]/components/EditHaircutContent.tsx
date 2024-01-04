@@ -17,7 +17,7 @@ interface EditHaircutProps {
 interface HaircutProps {
   id: string
   name: string
-  price: number | string
+  price: string
   status: boolean
   userId: string
 }
@@ -28,8 +28,8 @@ export default function EditHaircutContent({
 }: EditHaircutProps) {
   const { id } = useParams()
 
-  const [name, setName] = useState<any>("")
-  const [price, setPrice] = useState<any>("")
+  const [name, setName] = useState<string>("")
+  const [price, setPrice] = useState<string>("")
 
   const router = useRouter()
 
@@ -70,15 +70,16 @@ export default function EditHaircutContent({
     }
 
     try {
-      const numericPrice = parseFloat(price)
-
       await api.put("/haircut", {
         name: name,
-        price: numericPrice,
+        price: price,
         haircutId: id,
       })
 
+      router.refresh()
       alert("Haircut updated successfully")
+      setName("")
+      setPrice("")
     } catch (error) {
       console.log(error)
     }
