@@ -1,9 +1,26 @@
+"use client"
+
 import MobileNav from "@/components/shared/MobileNav"
 import Link from "next/link"
 import { CiCirclePlus } from "react-icons/ci"
 import { FaUser } from "react-icons/fa"
 
-export default function DashboardContent() {
+export interface ScheduleItem {
+  id: string
+  customer: string
+  haircut: {
+    id: string
+    name: string
+    price: string
+    userId: string
+  }
+}
+
+interface DashboardProps {
+  schedule: ScheduleItem[]
+}
+
+export default function DashboardContent({ schedule }: DashboardProps) {
   return (
     <>
       <nav className="block md:hidden">
@@ -23,19 +40,22 @@ export default function DashboardContent() {
             </Link>
           </div>
         </div>
-        <Link
-          href={`/dashboard/haircut`}
-          className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white mb-4"
-        >
-          <div className="flex-center gap-3">
-            <span className="text-amber-500 ">
-              <FaUser size={25} />
-            </span>
-            <h1>Igor</h1>
-          </div>
-          <p>80's Style</p>
-          <p className="text-green-500">$10.00</p>
-        </Link>
+        {schedule.map((schedule) => (
+          <Link
+            href={`/dashboard/haircut`}
+            className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white mb-4"
+            key={schedule.id}
+          >
+            <div className="flex-center gap-3">
+              <span className="text-amber-500 ">
+                <FaUser size={25} />
+              </span>
+              <h1>{schedule?.customer}</h1>
+            </div>
+            <p>{schedule.haircut?.name}</p>
+            <p className="text-green-500">${schedule.haircut?.price}</p>
+          </Link>
+        ))}
       </div>
     </>
   )
