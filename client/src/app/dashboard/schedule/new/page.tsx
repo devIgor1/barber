@@ -1,3 +1,5 @@
+import NewScheduleForm from "./components/NewScheduleForm"
+
 export default function NewSchedule() {
-  return <div className="text-white">hello</div>
+  return <NewScheduleForm />
 }
