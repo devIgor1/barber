@@ -1,12 +1,53 @@
 "use client"
 
+import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
-import { ChangeEvent, useState } from "react"
+import { useRouter } from "next/navigation"
+import { ChangeEvent, FormEvent, useState } from "react"
 
-export default function NewScheduleForm() {
+interface HaircutsItem {
+  id: string
+  name: string
+  price: number | string
+  status: boolean
+  userId: string
+}
+
+interface HaircutsProps {
+  haircuts: HaircutsItem[]
+}
+
+export default function NewScheduleForm({ haircuts }: HaircutsProps) {
   const [customer, setCustomer] = useState<string>("")
+  const [selectedHaircut, setSelectedHaircut] = useState(haircuts[0])
+  const router = useRouter()
+
+  function handleChangeSelect(id: string) {
+    const haircutItem = haircuts.find((haircut) => haircut.id === id)
+    setSelectedHaircut(haircutItem)
+  }
+
+  async function handleRegisterSchedule(e: FormEvent) {
+    e.preventDefault()
+
+    if (!customer) {
+      alert("Customer is required to register schedule.")
+      return
+    }
+
+    try {
+      await api.post("/schedule", {
+        customer: customer,
+        haircutId: selectedHaircut?.id,
+      })
+
+      router.push("/dashboard")
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
@@ -43,16 +84,24 @@ export default function NewScheduleForm() {
             </div>
             <div className="flex flex-col">
               <label className="text-white text-xl mb-1">Haircut</label>
-              <select className="rounded-md outline-none p-2 mb-5 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold text-black">
-                <option key={1} value="80's Style">
-                  80's Style
-                </option>
+              <select
+                onChange={(e) => handleChangeSelect(e.target.value)}
+                className="rounded-md outline-none p-2 mb-5 bg-gradient-to-l from-slate-50 to-slate-200 font-semibold text-black"
+              >
+                {haircuts.map((haircut) => (
+                  <option key={haircut.id} value={haircut.id}>
+                    {haircut.name}
+                  </option>
+                ))}
               </select>
             </div>
 
             <Separator className="mt-8" />
             <div className="flex-center w-full mt-5">
-              <button className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300 disabled:hidden">
+              <button
+                onClick={handleRegisterSchedule}
+                className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300 disabled:hidden"
+              >
                 Register
               </button>
             </div>

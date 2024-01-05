@@ -16,7 +16,6 @@ interface HaircutsItem {
 
 interface HaircutsProps {
   haircuts: HaircutsItem[]
-  disabledHaircuts: HaircutsItem[]
 }
 
 export default function HaircutsContent({ haircuts }: HaircutsProps) {
