@@ -1,5 +1,5 @@
 import NewScheduleForm from "./components/NewScheduleForm"
 
-export default function NewSchedule() {
+export default async function NewSchedule() {
   return <NewScheduleForm />
 }
