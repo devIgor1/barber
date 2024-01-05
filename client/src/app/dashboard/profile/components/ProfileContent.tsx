@@ -21,8 +21,12 @@ interface UserProps {
 }
 
 export default function ProfileContent(user: ProfileProps) {
-  const [name, setName] = useState<string>(user && user.data?.name)
-  const [address, setAddress] = useState<string>(user && user.data?.address)
+  const [name, setName] = useState<string>(
+    user && user.data?.name ? user.data.name : ""
+  )
+  const [address, setAddress] = useState<string>(
+    user && user.data?.address ? user.data.address : ""
+  )
 
   const router = useRouter()
 

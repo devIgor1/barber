@@ -130,14 +130,14 @@ export default function EditHaircutContent({
             <div className="flex-center w-full mt-5">
               <button
                 onClick={handleUpdateHaircut}
-                disabled={!subscription && count >= 3}
+                disabled={!subscription}
                 className="text-shadow bg-gradient-to-r from-yellow-400 to-amber-500 w-full h-11 rounded-lg text-white font-semibold hover:scale-95 duration-300 disabled:hidden"
               >
                 Save
               </button>
             </div>
           </form>
-          {!subscription && count >= 3 && (
+          {!subscription && (
             <p className="text-base text-center mt-4">
               It looks like you've reached your limit on cuts. Consider going
               <span className="text-green-500"> premium</span> for unlimited

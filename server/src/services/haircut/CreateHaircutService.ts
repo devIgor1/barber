@@ -3,7 +3,7 @@ import prisma from "../../prisma"
 interface HaircutRequest {
   userId: string
   name: string
-  price: number
+  price: string
 }
 
 class CreateHaircutService {

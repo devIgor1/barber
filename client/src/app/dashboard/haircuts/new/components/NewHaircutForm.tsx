@@ -39,10 +39,13 @@ export default function NewHaircutForm({
 
   async function handleRegisterHaircut(data: FormData) {
     try {
-      await api.post("/haircut", data)
+      await api.post("/haircut", {
+        name: data.name,
+        price: data.price,
+      })
 
-      alert("Haircut registration successful")
       router.refresh()
+      alert("Haircut registration successful")
       reset()
     } catch (error) {
       console.log(error)
@@ -105,7 +108,8 @@ export default function NewHaircutForm({
 
           {!subscription && count >= 3 && (
             <p className="text-base text-center mt-4">
-              It looks like you've reached your limit on cuts. Consider going
+              It looks like you've reached your limit on haircuts. Consider
+              going
               <span className="text-green-500"> premium</span> for unlimited
               access.
             </p>
