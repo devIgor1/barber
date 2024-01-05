@@ -5,6 +5,7 @@ import MobileNav from "@/components/shared/MobileNav"
 import { Separator } from "@/components/ui/separator"
 import Link from "next/link"
 import { FormEvent, useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface ProfileProps {
   data: UserProps
@@ -23,6 +24,8 @@ export default function ProfileContent(user: ProfileProps) {
   const [name, setName] = useState<string>(user && user.data?.name)
   const [address, setAddress] = useState<string>(user && user.data?.address)
 
+  const router = useRouter()
+
   async function handleUpdateUser(e: FormEvent) {
     e.preventDefault()
 
@@ -39,6 +42,8 @@ export default function ProfileContent(user: ProfileProps) {
           },
         }
       )
+
+      router.refresh()
       alert("Data has been successfully updated.")
     } catch (error) {
       console.log(error)
