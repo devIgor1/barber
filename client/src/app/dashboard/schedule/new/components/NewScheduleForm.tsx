@@ -43,7 +43,9 @@ export default function NewScheduleForm({ haircuts }: HaircutsProps) {
         haircutId: selectedHaircut?.id,
       })
 
+      router.refresh()
       router.push("/dashboard")
+      alert("Customer scheduled successfully!")
     } catch (error) {
       console.log(error)
     }

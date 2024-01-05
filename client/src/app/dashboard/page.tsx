@@ -21,8 +21,6 @@ interface DashboardProps {
 const Dashboard = async (schedule: DashboardProps) => {
   const schedulesData = await getSchedules(schedule)
 
-  console.log(schedulesData)
-
   return <DashboardContent schedule={schedulesData} />
 }
 
