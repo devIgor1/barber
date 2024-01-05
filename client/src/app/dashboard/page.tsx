@@ -1,15 +1,8 @@
 import MobileNav from "@/components/shared/MobileNav"
+import DashboardContent from "./components/DashboardContent"
 
 const Dashboard = () => {
-  return (
-    <div>
-      <nav className="block md:hidden">
-        <MobileNav />
-      </nav>
-
-      <h1 className="p-5">Dashboard</h1>
-    </div>
-  )
+  return <DashboardContent />
 }
 
 export default Dashboard
