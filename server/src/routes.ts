@@ -14,6 +14,7 @@ import { NewScheduleController } from "./controllers/schedule/NewScheduleControl
 import { ListScheduleController } from "./controllers/schedule/ListScheduleController"
 import { FinishScheduleController } from "./controllers/schedule/FinishScheduleController"
 import { ListAllUserController } from "./controllers/user/ListAllUsersController"
+import { DeleteHaircutController } from "./controllers/haircut/DeleteHaircutController"
 
 const router = Router()
 
@@ -58,6 +59,8 @@ router.get(
   isAuthenticated,
   new HaircutDetailsController().handle
 )
+
+router.delete("/haircut", isAuthenticated, new DeleteHaircutController().handle)
 
 // --SCHEDULE ROUTES-- //
 
