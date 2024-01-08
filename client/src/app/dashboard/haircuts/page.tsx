@@ -11,10 +11,9 @@ interface HaircutsItem {
 
 interface HaircutsProps {
   haircuts: HaircutsItem[]
-  disabledHaircuts: HaircutsItem[]
 }
 
-const Haircuts = async ({ haircuts, disabledHaircuts }: HaircutsProps) => {
+const Haircuts = async ({ haircuts }: HaircutsProps) => {
   const haircutsData = await getHaircuts({ haircuts })
 
   return (
