@@ -13,7 +13,7 @@ const MobileNav = () => {
           <h1 className="text-3xl font-semibold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
             BARBER
           </h1>
-          <span className="bg-gradient-to-r from-slate-50 to-slate-200 text-black relative text-xl top-6 right-9 font-bold rounded-lg px-1 hover:rotate-12 duration-300">
+          <span className="bg-gradient-to-r from-slate-50 to-slate-200 text-black md:relative text-xl top-6 right-9 font-bold rounded-lg px-1 hover:rotate-12 duration-300">
             PRO
           </span>
         </Link>

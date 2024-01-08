@@ -2,6 +2,11 @@
 
 import { ModalContext } from "./Modal"
 import { useContext, useRef, MouseEvent } from "react"
+import { IoCloseOutline } from "react-icons/io5"
+import { MdAttachMoney } from "react-icons/md"
+import { HiOutlineScissors } from "react-icons/hi"
+import { FaUser } from "react-icons/fa"
+import { Separator } from "@/components/ui/separator"
 
 export function ModalSchedule() {
   const { handleModalVisible } = useContext(ModalContext)
@@ -15,43 +20,47 @@ export function ModalSchedule() {
 
   return (
     <div
-      className="absolute bg-gray-900/80 w-full min-h-screen"
+      className=" bg-zinc-950/95 w-full min-h-screen absolute"
       onClick={handleModalClick}
     >
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 md:left-80 flex items-center justify-center">
         <div
           ref={modalRef}
-          className="bg-white shadow-lg w-4/5 md:w-1/2 max-w-2xl p-3 rounded"
+          className="bg-zinc-900 text-white shadow-lg w-4/5 md:w-3/4 max-w-2xl p-3 rounded"
         >
           <div className="flex items-center justify-between mb-4">
-            <h1 className="font-bold text-lg md:text-2xl">Ticket Details</h1>
+            <h1 className="font-bold text-lg md:text-2xl">Next in queue</h1>
             <button
               onClick={handleModalVisible}
-              className="bg-red-500 p-1 px-2 text-white rounded hover:opacity-80"
+              className="  px-2 text-[#fba931] rounded hover:opacity-80"
             >
-              Close
+              <IoCloseOutline size={30} />
             </button>
           </div>
-          <div className="flex flex-wrap gap-1 mb-2">
-            <h2 className="font-bold">Name: </h2>
+          <Separator className="my-5" />
+          <div className="flex flex-wrap items-center gap-1 mb-5">
+            <span className="font-bold text-[#fba931]">
+              <FaUser size={30} />
+            </span>
+            <h2 className="text-2xl text-[#fba931]">Igor Moraes</h2>
           </div>
-          <div className="flex flex-col gap-1 mb-2">
-            <h2 className="font-bold">Description: </h2>
+          <div className="flex flex-wrap items-center gap-1 mb-5">
+            <span className="">
+              <HiOutlineScissors size={30} />
+            </span>
+            <h2 className="text-2xl ">80's Style</h2>
           </div>
-
-          <div className="w-full border-b-[1.5px] my-4"></div>
-          <h1 className="font-bold text-lg mb-4">Customer Details</h1>
-
-          <div className="flex flex-wrap gap-1 mb-2">
-            <h2 className="font-bold">Name: </h2>
+          <div className="flex flex-wrap items-center gap-1 mb-2">
+            <span className="text-green-500">
+              <MdAttachMoney size={34} />
+            </span>
+            <h2 className="text-2xl text-green-500">15.00</h2>
           </div>
-
-          <div className="flex flex-wrap gap-1 mb-2">
-            <h2 className="font-bold">Phone: </h2>
-          </div>
-
-          <div className="flex flex-wrap gap-1 mb-2">
-            <h2 className="font-bold">Email: </h2>
+          <Separator className="mt-5" />
+          <div className="w-full text-end">
+            <button className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-2 text-black font-medium rounded-sm mt-2">
+              Finish Service
+            </button>
           </div>
         </div>
       </div>
