@@ -5,9 +5,7 @@ import MobileNav from "@/components/shared/MobileNav"
 import Link from "next/link"
 import { FormEvent, useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
-import { Input } from "@/components/shared/Input"
 import { Separator } from "@/components/ui/separator"
-import { Router } from "next/router"
 
 interface EditHaircutProps {
   subscription: boolean
