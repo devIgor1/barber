@@ -139,7 +139,8 @@ export default function EditHaircutContent({
           </form>
           {!subscription && (
             <p className="text-base text-center mt-4">
-              It looks like you've reached your limit on cuts. Consider going
+              It looks like you're trying to edit your haircut style. Consider
+              going
               <span className="text-green-500"> premium</span> for unlimited
               access.
             </p>
