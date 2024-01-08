@@ -60,6 +60,19 @@ export default function EditHaircutContent({
     loadHaircutDetails()
   }, [id])
 
+  async function handleDeleteHaircut() {
+    try {
+      await api.delete("/haircut", {
+        params: {
+          haircutId: id,
+        },
+      })
+      router.push("/dashboard/haircuts")
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   async function handleUpdateHaircut(e: FormEvent) {
     e.preventDefault()
 
@@ -123,6 +136,13 @@ export default function EditHaircutContent({
                 onChange={(e) => setPrice(e.target.value)}
               />
             </div>
+
+            <button
+              onClick={handleDeleteHaircut}
+              className="bg-[#dc143c] p-1 rounded-lg hover:scale-95 duration-300"
+            >
+              Delete
+            </button>
 
             <Separator className="mt-4" />
             <div className="flex-center w-full mt-5">

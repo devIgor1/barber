@@ -1,13 +1,13 @@
 import { Request, Response } from "express"
-import { HaircutDetailsService } from "../../services/haircut/HaircutDetailsService"
+import { DeleteHaircutService } from "../../services/haircut/DeleteHaircutService" // Ajuste do nome do serviço
 
 class DeleteHaircutController {
   async handle(req: Request, res: Response) {
     const haircutId = req.query.haircutId as string
 
-    const deletHaircut = new HaircutDetailsService()
+    const deleteHaircut = new DeleteHaircutService()
 
-    const haircut = await deletHaircut.execute({ haircutId })
+    const haircut = await deleteHaircut.execute({ haircutId })
 
     return res.json(haircut)
   }

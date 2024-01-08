@@ -12,7 +12,7 @@ class DeleteHaircutService {
       },
     })
 
-    return haircut
+    return { message: "haircut deleted" }
   }
 }
 
