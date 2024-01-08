@@ -1,6 +1,4 @@
-import MobileNav from "@/components/shared/MobileNav"
 import DashboardContent from "./components/DashboardContent"
-import getHaircuts from "./haircuts/components/GetHaircuts"
 import getSchedules from "./components/getSchedules"
 
 export interface ScheduleItem {
