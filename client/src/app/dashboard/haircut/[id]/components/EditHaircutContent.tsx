@@ -60,14 +60,18 @@ export default function EditHaircutContent({
     loadHaircutDetails()
   }, [id])
 
-  async function handleDeleteHaircut() {
+  async function handleDeleteHaircut(e: FormEvent) {
+    e.preventDefault()
+
     try {
       await api.delete("/haircut", {
         params: {
           haircutId: id,
         },
       })
+      alert("Haircut deleted successfully!")
       router.push("/dashboard/haircuts")
+      router.refresh()
     } catch (error) {
       console.log(error)
     }
@@ -89,8 +93,6 @@ export default function EditHaircutContent({
 
       router.refresh()
       alert("Haircut updated successfully")
-      setName("")
-      setPrice("")
     } catch (error) {
       console.log(error)
     }
