@@ -44,8 +44,8 @@ export default function NewScheduleForm({ haircuts }: HaircutsProps) {
       })
 
       alert("Customer scheduled successfully!")
-      window.location.reload()
-      setCustomer("")
+      router.push("/dashboard")
+      router.refresh()
     } catch (error) {
       console.log(error)
     }
@@ -59,7 +59,7 @@ export default function NewScheduleForm({ haircuts }: HaircutsProps) {
       <div className="flex-center flex-col pt-20 mx-4">
         <div className="flex-between wrapper">
           <Link
-            href="/dashboard/haircuts"
+            href="/dashboard"
             className="text-white bg-zinc-800 p-2 rounded-lg flex-center gap-3 hover:bg-zinc-800/75 duration-300 text-start"
           >
             Back

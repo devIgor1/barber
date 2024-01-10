@@ -44,9 +44,9 @@ export default function NewHaircutForm({
         price: data.price,
       })
 
+      router.push("/dashboard/haircuts")
       router.refresh()
       alert("Haircut registration successful")
-      reset()
     } catch (error) {
       console.log(error)
     }
