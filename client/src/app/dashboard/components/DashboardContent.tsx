@@ -1,9 +1,7 @@
 "use client"
 
 import MobileNav from "@/components/shared/MobileNav"
-import { ModalContext } from "@/components/shared/modal/Modal"
 import Link from "next/link"
-import { useContext } from "react"
 import { CiCirclePlus } from "react-icons/ci"
 import { FaUser } from "react-icons/fa"
 
@@ -23,8 +21,6 @@ interface DashboardProps {
 }
 
 export default function DashboardContent({ schedule }: DashboardProps) {
-  const { handleModalVisible } = useContext(ModalContext)
-
   return (
     <>
       <nav className="block md:hidden">
@@ -45,8 +41,7 @@ export default function DashboardContent({ schedule }: DashboardProps) {
           </div>
         </div>
         {schedule.map((schedule) => (
-          <button
-            onClick={handleModalVisible}
+          <div
             className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white mb-4 cursor-pointer"
             key={schedule.id}
           >
@@ -58,7 +53,7 @@ export default function DashboardContent({ schedule }: DashboardProps) {
             </div>
             <p>{schedule.haircut?.name}</p>
             <p className="text-green-500">${schedule.haircut?.price}</p>
-          </button>
+          </div>
         ))}
       </div>
     </>
