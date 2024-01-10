@@ -1,9 +1,12 @@
 "use client"
 
+import { api } from "@/app/services/apiClient"
 import MobileNav from "@/components/shared/MobileNav"
 import Link from "next/link"
 import { CiCirclePlus } from "react-icons/ci"
 import { FaUser } from "react-icons/fa"
+import { GiCheckMark } from "react-icons/gi"
+import { useParams, useRouter } from "next/navigation"
 
 export interface ScheduleItem {
   id: string
@@ -21,6 +24,21 @@ interface DashboardProps {
 }
 
 export default function DashboardContent({ schedule }: DashboardProps) {
+  const router = useRouter()
+
+  async function handleFinishSchedule(id: string) {
+    try {
+      await api.delete("/schedule", {
+        params: {
+          scheduleId: id,
+        },
+      })
+      router.refresh()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <nav className="block md:hidden">
@@ -41,19 +59,27 @@ export default function DashboardContent({ schedule }: DashboardProps) {
           </div>
         </div>
         {schedule.map((schedule) => (
-          <div
-            className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white mb-4 cursor-pointer"
-            key={schedule.id}
-          >
-            <div className="flex-center gap-3">
-              <span className="text-amber-500 ">
-                <FaUser size={25} />
-              </span>
-              <h1>{schedule?.customer}</h1>
+          <>
+            <div
+              className="bg-zinc-900/85 wrapper p-8 rounded-lg px-5 flex-between text-base md:text-xl text-white mb-4 cursor-pointer"
+              key={schedule.id}
+            >
+              <div className="flex-center gap-3">
+                <span className="text-amber-500 ">
+                  <FaUser size={25} />
+                </span>
+                <h1>{schedule?.customer}</h1>
+              </div>
+              <p>{schedule.haircut?.name}</p>
+              <p className="text-green-500">${schedule.haircut?.price}</p>
+              <button
+                onClick={() => handleFinishSchedule(schedule.id)}
+                className="bg-gradient-to-t from-green-400 to-white border-2 border-green-300 rounded-full hover:scale-110 duration-300"
+              >
+                <GiCheckMark size={32} />
+              </button>
             </div>
-            <p>{schedule.haircut?.name}</p>
-            <p className="text-green-500">${schedule.haircut?.price}</p>
-          </div>
+          </>
         ))}
       </div>
     </>
