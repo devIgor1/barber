@@ -27,7 +27,7 @@ export default function HaircutsContent({ haircuts }: HaircutsProps) {
         <MobileNav />
       </nav>
       <div className="flex-center flex-col pt-20 mx-4">
-        <h1 className="text-center wrapper bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-2 text-2xl md:text-4xl text-shadow mb-5 font-medium">
+        <h1 className="text-center wrapper bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-2 text-2xl md:text-4xl mb-5 font-medium">
           Haircuts Models
         </h1>
         <div className="wrapper mb-5">

@@ -60,7 +60,7 @@ export default function ProfileContent(user: ProfileProps) {
         <MobileNav />
       </nav>
       <div className="flex-center flex-col pt-20 mx-2">
-        <h1 className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-2 text-4xl md:text-5xl text-shadow mb-5 font-medium">
+        <h1 className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-2 text-4xl md:text-5xl mb-5 font-medium">
           My Profile
         </h1>
         <div className="bg-zinc-900/85 wrapper flex-center p-8 rounded-lg px-5">

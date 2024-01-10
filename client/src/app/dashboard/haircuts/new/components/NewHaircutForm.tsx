@@ -65,7 +65,7 @@ export default function NewHaircutForm({
           >
             Back
           </Link>
-          <h1 className="text-center bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-2 text-2xl md:text-4xl text-shadow mb-5 font-medium">
+          <h1 className="text-center bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-lg p-2 text-2xl md:text-4xl mb-5 font-medium">
             Haircuts Models
           </h1>
         </div>
