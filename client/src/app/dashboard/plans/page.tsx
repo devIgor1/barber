@@ -1,5 +1,4 @@
 import MobileNav from "@/components/shared/MobileNav"
-import { Separator } from "@/components/ui/separator"
 
 export default function Plans() {
   return (
