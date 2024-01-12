@@ -98,7 +98,7 @@ export default function ProfileContent(user: ProfileProps) {
                   {user.premium ? "Premium" : "Free"}
                 </p>
                 <Link
-                  href="/plans"
+                  href="/dashboard/plans"
                   className="bg-green-500 text-white text-shadow font-bold p-2 rounded-lg hover:bg-green-600 duration-300"
                 >
                   Change Plan
